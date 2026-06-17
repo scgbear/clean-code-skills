@@ -35,6 +35,13 @@ These skills encode battle-tested solutions to exactly these problems—directly
 | TypeScript | `clean-general` | Core principles (DRY, single responsibility) | G5, G16, G23, G25, G30, G36 |
 | TypeScript | `clean-names` | Descriptive, unambiguous naming | N1-N7 |
 | TypeScript | `clean-tests` | Fast, thorough, boundary-aware tests | T1-T9 |
+| Java | `boy-scout` | **Orchestrator**—always leave code cleaner than you found it | Coordinates all skills |
+| Java | `java-clean-code` | **Master skill** with all 66 rules | C1-C5, E1-E2, F1-F4, G1-G36, N1-N7, J1-J3, T1-T9 |
+| Java | `clean-comments` | Minimal, accurate commenting | C1-C5 |
+| Java | `clean-functions` | Small, focused, obvious functions | F1-F4 |
+| Java | `clean-general` | Core principles (DRY, single responsibility) | G5, G16, G23, G25, G30, G36 |
+| Java | `clean-names` | Descriptive, unambiguous naming | N1-N7 |
+| Java | `clean-tests` | Fast, thorough, boundary-aware tests | T1-T9 |
 
 Use the master skill for comprehensive coverage, or individual skills for targeted enforcement.
 
@@ -43,7 +50,7 @@ Use the master skill for comprehensive coverage, or individual skills for target
 Pick one track and copy only that track's skills:
 
 > [!WARNING]
-> Install only one language track per skills directory. Python and TypeScript tracks reuse the same skill names (`boy-scout`, `clean-functions`, etc.). Installing both together can make the agent load conflicting instructions and behave inconsistently.
+> Install only one language track per skills directory. Python, TypeScript, and Java tracks reuse the same skill names (`boy-scout`, `clean-functions`, etc.). Installing more than one together can make the agent load conflicting instructions and behave inconsistently.
 
 ```bash
 # Python track
@@ -51,6 +58,9 @@ cp -r skills/python/* <YOUR_SKILLS_DIR>/
 
 # TypeScript track
 cp -r skills/typescript/* <YOUR_SKILLS_DIR>/
+
+# Java track
+cp -r skills/java/* <YOUR_SKILLS_DIR>/
 ```
 
 ### The Boy Scout Rule
@@ -79,6 +89,9 @@ cp -r skills/python/* .agent/skills/
 
 # TypeScript track
 cp -r skills/typescript/* .agent/skills/
+
+# Java track
+cp -r skills/java/* .agent/skills/
 ```
 
 **Global** (applies to all projects):
@@ -90,6 +103,9 @@ cp -r skills/python/* ~/.gemini/antigravity/skills/
 
 # TypeScript track
 cp -r skills/typescript/* ~/.gemini/antigravity/skills/
+
+# Java track
+cp -r skills/java/* ~/.gemini/antigravity/skills/
 ```
 
 **Quick install** (global, one command) — pick one track:
@@ -110,6 +126,14 @@ cp -r /tmp/clean-code-skills/skills/typescript/* ~/.gemini/antigravity/skills/ &
 rm -rf /tmp/clean-code-skills
 ```
 
+```bash
+# Java track
+git clone https://github.com/ertugrul-dmr/clean-code-skills.git /tmp/clean-code-skills && \
+mkdir -p ~/.gemini/antigravity/skills && \
+cp -r /tmp/clean-code-skills/skills/java/* ~/.gemini/antigravity/skills/ && \
+rm -rf /tmp/clean-code-skills
+```
+
 ### Anthropic Claude Code
 
 **Project-specific**:
@@ -122,6 +146,9 @@ cp -r skills/python/* .claude/skills/
 
 # TypeScript track
 cp -r skills/typescript/* .claude/skills/
+
+# Java track
+cp -r skills/java/* .claude/skills/
 ```
 
 **Global**:
@@ -133,6 +160,9 @@ cp -r skills/python/* ~/.claude/skills/
 
 # TypeScript track
 cp -r skills/typescript/* ~/.claude/skills/
+
+# Java track
+cp -r skills/java/* ~/.claude/skills/
 ```
 
 **Quick install** (global, one command) — pick one track:
@@ -153,11 +183,19 @@ cp -r /tmp/clean-code-skills/skills/typescript/* ~/.claude/skills/ && \
 rm -rf /tmp/clean-code-skills
 ```
 
+```bash
+# Java track
+git clone https://github.com/ertugrul-dmr/clean-code-skills.git /tmp/clean-code-skills && \
+mkdir -p ~/.claude/skills && \
+cp -r /tmp/clean-code-skills/skills/java/* ~/.claude/skills/ && \
+rm -rf /tmp/clean-code-skills
+```
+
 **Verify**
 
 In a running Claude Code session, confirm the skills loaded:
 
-- Ask `What skills are available?` — you should see `boy-scout`, `clean-comments`, `clean-functions`, `clean-general`, `clean-names`, `clean-tests`, and `python-clean-code` in the list.
+- Ask `What skills are available?` — you should see `boy-scout`, `clean-comments`, `clean-functions`, `clean-general`, `clean-names`, `clean-tests`, and your master skill (`python-clean-code`, `typescript-clean-code`, or `java-clean-code`) in the list.
 - Or direct-invoke one: `/boy-scout` should load the Boy Scout skill explicitly.
 
 Skills hot-reload inside an existing `~/.claude/skills/` directory — no restart needed. If you created the directory for the first time during this session, restart Claude Code once so it starts watching it.
@@ -180,7 +218,7 @@ Then `git pull` in `~/src/clean-code-skills` refreshes every skill.
 **Uninstall**
 
 ```bash
-rm -rf ~/.claude/skills/{boy-scout,clean-comments,clean-functions,clean-general,clean-names,clean-tests,python-clean-code}
+rm -rf ~/.claude/skills/{boy-scout,clean-comments,clean-functions,clean-general,clean-names,clean-tests,python-clean-code,typescript-clean-code,java-clean-code}
 ```
 
 ### Other Agent Skills-Compatible Tools
@@ -279,6 +317,47 @@ function processTransactionsWithoutTax(transactions: Transaction[]): number[] {
 }
 ```
 
+**After (Java track)**:
+
+```java
+import java.util.List;
+import java.util.Map;
+
+enum TransactionType { CA, NY }
+
+record Transaction(double value, TransactionType type) {}
+
+final class TaxRates {
+    static final double TAX_RATE_CA = 0.0825;
+    static final double TAX_RATE_NY = 0.05;
+    private TaxRates() {}
+}
+
+final class TaxCalculator {
+    private static final Map<TransactionType, Double> TAX_RATES = Map.of(
+        TransactionType.CA, TaxRates.TAX_RATE_CA,
+        TransactionType.NY, TaxRates.TAX_RATE_NY
+    );
+
+    private TaxCalculator() {}
+
+    /** Apply state-specific tax to transaction value. */
+    static double applyTax(Transaction transaction) {
+        return transaction.value() * (1 + TAX_RATES.get(transaction.type()));
+    }
+
+    /** Calculate taxed values for all transactions. */
+    static List<Double> processTransactionsWithTax(List<Transaction> transactions) {
+        return transactions.stream().map(TaxCalculator::applyTax).toList();
+    }
+
+    /** Extract raw values from all transactions. */
+    static List<Double> processTransactionsWithoutTax(List<Transaction> transactions) {
+        return transactions.stream().map(Transaction::value).toList();
+    }
+}
+```
+
 ---
 
 ## Rule Reference
@@ -365,6 +444,13 @@ function processTransactionsWithoutTax(transactions: Transaction[]): number[] {
 | TS2 | Use enums or literal unions, not magic constants |
 | TS3 | Type public interfaces and avoid `any` at boundaries |
 
+### Java-Specific (J1-J3)
+| Rule | Principle |
+|------|-----------|
+| J1 | Keep imports explicit and stable; no wildcard imports |
+| J2 | Don't inherit constants; use static final or static imports |
+| J3 | Use enums, not magic constants |
+
 ### Tests (T1-T9)
 | Rule | Principle |
 |------|-----------|
@@ -407,6 +493,11 @@ skills/
 │       └── SKILL.md
 ├── typescript/
 │   ├── typescript-clean-code/
+│   │   └── SKILL.md
+│   └── clean-comments/
+│       └── SKILL.md
+├── java/
+│   ├── java-clean-code/
 │   │   └── SKILL.md
 │   └── clean-comments/
 │       └── SKILL.md
