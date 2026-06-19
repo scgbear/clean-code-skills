@@ -1,5 +1,5 @@
 ---
-description: "Reviews an existing codebase against the Clean Code rule catalogs and writes a Task Planner-ready research findings document."
+description: "Reviews an existing codebase against the Clean Code rule catalogs (C#, Java, Python, Rust, TypeScript) and writes a Task Planner-ready research findings document."
 name: Clean Code Reviewer
 disable-model-invocation: true
 tools:
@@ -78,10 +78,14 @@ paths (`plans/`, `details/`, `changes/`) automatically.
 
 The authoritative rule source is the set of per-language Clean Code skills:
 
+- `.github/skills/csharp-clean-code/SKILL.md`: C# rules (families
+  C / E / F / G / N / T / CS / CT); use when reviewing C#, for example `*.cs`.
 - `.github/skills/java-clean-code/SKILL.md`: Java rules (families
   C / E / F / G / N / T / J); use when reviewing Java, for example `*.java`.
 - `.github/skills/python-clean-code/SKILL.md`: Python rules (families
   C / E / F / G / N / T / P); use when reviewing Python, for example `*.py`.
+- `.github/skills/rust-clean-code/SKILL.md`: Rust rules (families
+  C / E / F / G / N / T / RS / RT); use when reviewing Rust, for example `*.rs`.
 - `.github/skills/typescript-clean-code/SKILL.md`: TypeScript rules (families
   C / E / F / G / N / T / TS); use when reviewing TypeScript, for example `*.ts` and `*.tsx`.
 

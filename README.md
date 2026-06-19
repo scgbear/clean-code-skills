@@ -21,6 +21,8 @@ These skills encode battle-tested solutions to exactly these problems—directly
 
 | Track | Skill | Description | Rules |
 |-------|-------|-------------|-------|
+| C# | `csharp-clean-code` | **Master skill** with all rules | C1-C5, E1-E2, F1-F4, G1-G36, N1-N7, CS1-CS4, CT1-CT5, T1-T9 |
+| Rust | `rust-clean-code` | **Master skill** with all rules | C1-C5, E1-E2, F1-F4, G1-G36, N1-N7, RS1-RS5, RT1-RT5, T1-T9 |
 | Python | `boy-scout` | **Orchestrator**—always leave code cleaner than you found it | Coordinates all skills |
 | Python | `python-clean-code` | **Master skill** with all 66 rules | C1-C5, E1-E2, F1-F4, G1-G36, N1-N7, P1-P3, T1-T9 |
 | Python | `clean-comments` | Minimal, accurate commenting | C1-C5 |

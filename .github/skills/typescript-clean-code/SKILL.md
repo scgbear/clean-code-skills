@@ -1,6 +1,7 @@
 ---
 name: typescript-clean-code
 description: "Clean Code catalog for TypeScript (rules C/E/F/G/N/T/TS) plus the Boy Scout Rule. Use when writing, reviewing, refactoring, or auditing TypeScript (*.ts, *.tsx) for naming, functions, comments, DRY, boundaries, tests, React props, and any/unknown usage."
+applyTo: "**/*.ts, **/*.tsx"
 ---
 
 <!-- markdownlint-disable-file -->

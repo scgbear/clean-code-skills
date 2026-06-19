@@ -1,6 +1,7 @@
 ---
 name: python-clean-code
 description: "Clean Code catalog for Python (rules C/E/F/G/N/T/P) plus the Boy Scout Rule. Use when writing, reviewing, refactoring, or auditing Python (*.py) for naming, functions, comments, DRY, boundaries, error handling, and tests."
+applyTo: "**/*.py"
 ---
 
 <!-- markdownlint-disable-file -->

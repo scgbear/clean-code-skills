@@ -1,6 +1,7 @@
 ---
 name: java-clean-code
 description: "Clean Code catalog for Java (rules C/E/F/G/N/T/J) plus the Boy Scout Rule. Use when writing, reviewing, refactoring, or auditing Java (*.java) for naming, functions, comments, DRY, boundaries, error handling, and tests."
+applyTo: "**/*.java"
 ---
 
 <!-- markdownlint-disable-file -->
